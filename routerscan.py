@@ -2,6 +2,7 @@
 import subprocess as sp
 import urllib
 import socket
+import requests
 import os
 import sys
 import time as t
@@ -13,16 +14,18 @@ _version_ = "1.2 beta"
 portsfile = "ports.txt"
 hostsfile = "hosts.txt"
 goodip = []
+diapazons = []
+ports = []
 #####################
 #     функції       #
 #####################
-def ask(t=""):
-	if t != "":
-		a = input("rtscan ~$ ")
-		return a
-	else:
-		a = input(t)
-		return a
+def dload():
+	f = open(hostsfile, 'r')
+	for line in f:
+		l = line.strip()
+		diapazons.append(str(l))
+	f.close()
+
 def start_program():
 	title_bar("title")
 	t.sleep(0.7)
@@ -106,7 +109,11 @@ def menu1():
 		os.system("clear")
 		title_bar("menu1")
 		menu1()
-
+def addd():
+	a = input("ваш діапазон =>")
+	f = open(hostsfile, 'w')
+	f.close()	
+	menu1()
 def menu2():
 	
 	print("\n [1] додати порт")
@@ -135,16 +142,21 @@ def menu2():
 def ipcheck(ip):
 	status,result = sp.getstatusoutput("ping -c3 -w4 " + str(ip))
 	if status == 0:
-		print("System " + str(ip) + " is UP !")
+		print("Ping system " + str(ip) + " is UP !")
 		goodip.append(str(ip))
 	else:
 		print("Ping system " + str(ip) + " is DOWN !")
 def start():
-	for ip in IPNetwork (ask()):
-		ipcheck(ip)
+	if diapazons == "":
+		print("помилка немає діапазонів")
+		restart_program()
+	for d in diapazons:
+		for ip in IPNetwork (d):
+			ipcheck(ip)
 #####################
 #    код програми   #
 #####################
 start_program()
+dload()
 menu()
 
