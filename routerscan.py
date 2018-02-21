@@ -46,7 +46,7 @@ def menu():
 	print("\n [0] вихід \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
-		os.system("apt-get install nano && nano README.me")
+		os.system("apt-get install nano && nano README.md")
 		os.system("clear")
 		title_bar("menu")
 		menu()
