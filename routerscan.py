@@ -2,7 +2,6 @@
 import subprocess as sp
 import urllib
 import socket
-import requests
 import os
 import sys
 import time as t
