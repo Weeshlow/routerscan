@@ -1,5 +1,7 @@
 #!/usr/bin/python3
 import subprocess as sp
+import urllib
+import socket
 import os
 import sys
 import time as t
@@ -7,15 +9,20 @@ from netaddr import IPNetwork
 #####################
 #       змінні      #
 #####################
-_version_ = "0.1 beta"
+_version_ = "1.2 beta"
 portsfile = "ports.txt"
 hostsfile = "hosts.txt"
+goodip = []
 #####################
 #     функції       #
 #####################
-def ask():
-	a = input("rtscan ~$ ")
-	return a
+def ask(t=""):
+	if t != "":
+		a = input("rtscan ~$ ")
+		return a
+	else:
+		a = input(t)
+		return a
 def start_program():
 	title_bar("title")
 	t.sleep(0.7)
@@ -125,12 +132,13 @@ def menu2():
 		menu2()
 	
 
-def ipcheck(ipadres):
-    status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ipadres))
-    if status == 0:
-        print("System " + str(ipadres) + " is UP !")
-    else:
-        print("System " + str(ipadres) + " is DOWN !")
+def ipcheck(ip):
+	status,result = sp.getstatusoutput("ping -c3 -w4 " + str(ip))
+	if status == 0:
+		print("System " + str(ip) + " is UP !")
+		goodip.append(str(ip))
+	else:
+		print("Ping system " + str(ip) + " is DOWN !")
 def start():
 	for ip in IPNetwork (ask()):
 		ipcheck(ip)
