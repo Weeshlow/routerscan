@@ -7,6 +7,7 @@ import time as t
 #####################
 _version_ = "0.1 beta"
 portsfile = "ports.txt"
+hostsfile = "hosts.txt"
 #####################
 #     функції       #
 #####################
