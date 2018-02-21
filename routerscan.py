@@ -1,7 +1,9 @@
 #!/usr/bin/python3
+import subprocess as sp
 import os
 import sys
 import time as t
+from netaddr import IPNetwork
 #####################
 #       змінні      #
 #####################
@@ -11,6 +13,9 @@ hostsfile = "hosts.txt"
 #####################
 #     функції       #
 #####################
+def ask():
+	a = input("rtscan ~$ ")
+	return a
 def start_program():
 	title_bar("title")
 	t.sleep(0.7)
@@ -119,8 +124,16 @@ def menu2():
 		title_bar("menu2")
 		menu2()
 	
+
+def ipcheck(ipadres):
+    status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ipadres))
+    if status == 0:
+        print("System " + str(ipadres) + " is UP !")
+    else:
+        print("System " + str(ipadres) + " is DOWN !")
 def start():
-	print('start')
+	for ip in IPNetwork (ask()):
+		ipcheck(ip)
 #####################
 #    код програми   #
 #####################
