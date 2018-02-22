@@ -12,7 +12,7 @@ except ModuleNotFoundError:
 #####################
 #       змінні      #
 #####################
-_version_ = "1.4 beta"
+_version_ = "2.0 release"
 portsfile = "ports.txt"
 hostsfile = "hosts.txt"
 goodip = []
@@ -138,7 +138,7 @@ def menu1():
 def addd():
 	a = input("ваш діапазон =>")
 	f = open(hostsfile, 'a')
-	f.write(str(a)+"\n\n")
+	f.write(str(a)+"\n")
 	f.close()	
 	restart_program()
 def menu2():
@@ -173,25 +173,43 @@ def menu2():
 		os.system("clear")
 		title_bar("menu2")
 		menu2()
-def pingcheck(ip):
-	status,result = sp.getstatusoutput("ping -c3 -w5 " + str(ip))
-	if status == 0:
-		print("[+] " + str(ip))
-		goodip.append(str(ip))
-	else:
-		print("[-] " + str(ip))	
 
+#
+def servertest(ip,p):
+	host = str(ip)
+	port = int(p)
+	time = 10
+	args = socket.getaddrinfo(host, port, socket.AF_INET, socket.SOCK_STREAM)
+	for family, socktype, proto, canonname, sockaddr in args:
+		s = socket.socket(family, socktype, proto)
+		s.sockettimeout(time)
+		try:
+			s.connect(sockaddr)
+		except socket.error:
+			return False
+		else:
+			s.close()
+			return True
+
+def ipcheck(ip,port):
+	if servertest(ip,port):
+		print("[+] "+str(ip)+":"+str(port))
+	else:
+		print("[-] "+str(ip)+":"+str(port))
+#
 def start():
 	if diapazons == []:
 		print("помилка немає діапазонів")
 		t.sleep(0.4)
 		restart_program()
+	print("це займе багато часу!")
 	if ports == []:
 		print("помилка нема портів")
 		restart_program()
 	for d in diapazons:
-		for ip in IPNetwork (d):	
-			pingcheck(ip)
+		for ip in IPNetwork (d):
+			for port in ports:
+				ipcheck(ip,port)
 	result()
 
 
@@ -209,7 +227,7 @@ def result():
 			t.sleep(10)
 	elif a == "2":
 		for line in goddip:
-			print(a)
+			print(line)
 			exit()
 	
 	elif a == "e" or a == "exit" or a == "0":
