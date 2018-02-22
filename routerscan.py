@@ -9,7 +9,7 @@ from netaddr import IPNetwork
 #####################
 #       змінні      #
 #####################
-_version_ = "1.2 beta"
+_version_ = "1.4 beta"
 portsfile = "ports.txt"
 hostsfile = "hosts.txt"
 goodip = []
@@ -19,10 +19,17 @@ ports = []
 #     функції       #
 #####################
 def dload():
+	diapazons = []
 	f = open(hostsfile, 'r')
 	for line in f:
 		l = line.strip()
 		diapazons.append(str(l))
+	f.close()
+def pload():
+	f = open(portsfile, 'r')
+	for line in f:
+		l = line.strip()
+		ports.append(str(l))
 	f.close()
 
 def start_program():
@@ -97,10 +104,19 @@ def menu1():
 	elif a == "2":
 		deld()
 	elif a == "3":
-		showd()
+		if diapazons != []:
+			for d in diapazons:
+				print(str(d.strip()))
+			t.sleep(5)
+			menu1()
+		else:
+			print("ще немає діапазонів")
+			t.sleep(3)
+			menu1()
 	elif a == "e" or a == "exit" or a == "0":
 		os.system("clear")
 		title_bar("menu")
+		dload()
 		menu()
 	else:
 		print("неправельна команда")
@@ -125,10 +141,19 @@ def menu2():
 	elif a == "2":
 		delp()
 	elif a == "3":
-		showp()
+		if ports != []:
+			for p in ports:
+				print(str(p.strip()))
+			t.sleep(5)
+			menu1()
+		else:
+			print("портів немає!")
+			t.sleep(3)
+			menu2()
 	elif a == "e" or a == "exit" or a == "0":
 		os.system("clear")
 		title_bar("menu")
+		pload()
 		menu()
 	else:
 		print("неправельна команда")
@@ -145,8 +170,10 @@ def ipcheck(ip):
 		goodip.append(str(ip))
 	else:
 		print("Ping system " + str(ip) + " is DOWN !")
+
+
 def start():
-	if diapazons == "":
+	if diapazons == []:
 		print("помилка немає діапазонів")
 		restart_program()
 	for d in diapazons:
@@ -157,5 +184,6 @@ def start():
 #####################
 start_program()
 dload()
+pload()
 menu()
 
