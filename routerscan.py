@@ -174,7 +174,7 @@ def menu2():
 		title_bar("menu2")
 		menu2()
 def pingcheck(ip):
-	status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
+	status,result = sp.getstatusoutput("ping -c3 -w5 " + str(ip))
 	if status == 0:
 		print("[+] " + str(ip))
 		goodip.append(str(ip))
