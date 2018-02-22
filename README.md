@@ -5,4 +5,5 @@ it's a routerscan for termux
 git clone https://github.com/gornostay25/routerscan
 cd routerscan
 pip install requirements.txt 
+python routerscan.py
 ```
