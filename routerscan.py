@@ -21,6 +21,7 @@ ports = []
 #####################
 #     функції       #
 #####################
+
 def dload():
 	
 	f = open(hostsfile, 'r')
@@ -62,7 +63,8 @@ def title_bar(title):
 		print("\t             ДІАПАЗОНИ routerscan " + _version_)
 	elif title == "menu2":
 		print("\t             ПОРТИ routerscan " + _version_)
-
+	elif title == "result":
+		print("\t             РЕЗУЛЬТАТИ routerscan "+_version_)
 def menu():
 	print("\n [1] довідка")
 	print("\n [2] діапазони")
@@ -119,7 +121,7 @@ def menu1():
 			t.sleep(5)
 			menu1()
 		else:
-			print("ще немає діапазонів")
+			print("немає діапазонів")
 			t.sleep(3)
 			menu1()
 	elif a == "e" or a == "exit" or a == "0":
@@ -136,9 +138,9 @@ def menu1():
 def addd():
 	a = input("ваш діапазон =>")
 	f = open(hostsfile, 'a')
-	f.write(str(a))
+	f.write(str(a)+"\n\n")
 	f.close()	
-	menu1()
+	restart_program()
 def menu2():
 	
 	print("\n [1] додати порт (не працює)")
@@ -174,10 +176,10 @@ def menu2():
 def pingcheck(ip):
 	status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
 	if status == 0:
-		print("System " + str(ip) + " is UP !")
+		print("[+] " + str(ip))
 		goodip.append(str(ip))
 	else:
-		print("System " + str(ip)+ " is DOWN !")	
+		print("[-] " + str(ip))	
 
 def start():
 	if diapazons == []:
@@ -190,7 +192,37 @@ def start():
 	for d in diapazons:
 		for ip in IPNetwork (d):	
 			pingcheck(ip)
-	print(goodip)
+	result()
+
+
+
+def result():
+	title_bar("result")
+	print("\n [1] пройтися по адресам (termux)")
+	print("\n [2] показати адреси і вийти")
+	print("\n [0] вихід \n")
+	a = input("rtscan ~$ ")
+	if a == "1":
+		for a in goodip:
+			print(a)
+			os.system("termux-open-url http://"+a)
+			t.sleep(10)
+	elif a == "2":
+		for line in goddip:
+			print(a)
+			exit()
+	
+	elif a == "e" or a == "exit" or a == "0":
+		restart_program()
+	else:
+		print("неправельна команда")
+		t.sleep(3)
+		os.system("clear")
+		title_bar("result")
+		result()
+
+
+
 #####################
 #    код програми   #
 #####################
