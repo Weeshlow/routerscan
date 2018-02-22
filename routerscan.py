@@ -1,11 +1,14 @@
 #!/usr/bin/python3
-import subprocess as sp
-import urllib
 import socket
+import subprocess as sp
 import os
 import sys
 import time as t
-from netaddr import IPNetwork
+try:
+	from netaddr import IPNetwork
+except ModuleNotFoundError:
+	print("будласка встановіть netaddr\npip install netaddr\n")
+	exit()
 #####################
 #       змінні      #
 #####################
@@ -19,12 +22,13 @@ ports = []
 #     функції       #
 #####################
 def dload():
-	diapazons = []
+	
 	f = open(hostsfile, 'r')
 	for line in f:
 		l = line.strip()
 		diapazons.append(str(l))
 	f.close()
+
 def pload():
 	f = open(portsfile, 'r')
 	for line in f:
@@ -95,14 +99,19 @@ def menu():
 def menu1():
 	title_bar("menu1")
 	print("\n [1] додати діапазон")
-	print("\n [2] видалити діапазон")
+	print("\n [2] видалити діапазони")
 	print("\n [3] показати всі діапазони")
-	print("\n [0] вихід \n")
+	print("\n [0] назад \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
 		addd()
 	elif a == "2":
-		deld()
+		f = open(hostsfile, "w")
+		f.write("")
+		f.close()
+		print("діапазони видалено")
+		t.sleep(0.6)
+		restart_program()
 	elif a == "3":
 		if diapazons != []:
 			for d in diapazons:
@@ -126,20 +135,21 @@ def menu1():
 		menu1()
 def addd():
 	a = input("ваш діапазон =>")
-	f = open(hostsfile, 'w')
+	f = open(hostsfile, 'a')
+	f.write(str(a))
 	f.close()	
 	menu1()
 def menu2():
 	
-	print("\n [1] додати порт")
-	print("\n [2] видалити порт")
+	print("\n [1] додати порт (не працює)")
+	print("\n [2] видалити порт (не працює)")
 	print("\n [3] показати всі порти")
-	print("\n [0] вихід \n")
+	print("\n [0] назад \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
-		addp()
+		print("ця функція не працює")
 	elif a == "2":
-		delp()
+		print("ця функція не працює")
 	elif a == "3":
 		if ports != []:
 			for p in ports:
@@ -161,29 +171,33 @@ def menu2():
 		os.system("clear")
 		title_bar("menu2")
 		menu2()
-	
-
-def ipcheck(ip):
-	status,result = sp.getstatusoutput("ping -c3 -w4 " + str(ip))
+def pingcheck(ip):
+	status,result = sp.getstatusoutput("ping -c1 -w2 " + str(ip))
 	if status == 0:
-		print("Ping system " + str(ip) + " is UP !")
+		print("System " + str(ip) + " is UP !")
 		goodip.append(str(ip))
 	else:
-		print("Ping system " + str(ip) + " is DOWN !")
-
+		print("System " + str(ip)+ " is DOWN !")	
 
 def start():
 	if diapazons == []:
 		print("помилка немає діапазонів")
+		t.sleep(0.4)
+		restart_program()
+	if ports == []:
+		print("помилка нема портів")
 		restart_program()
 	for d in diapazons:
-		for ip in IPNetwork (d):
-			ipcheck(ip)
+		for ip in IPNetwork (d):	
+			pingcheck(ip)
+	print(goodip)
 #####################
 #    код програми   #
 #####################
-start_program()
-dload()
-pload()
-menu()
-
+try:
+	start_program()
+	dload()
+	pload()
+	menu()
+except KeyboardInterrupt:
+	exit()
