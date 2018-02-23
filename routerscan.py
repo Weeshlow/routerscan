@@ -141,17 +141,29 @@ def addd():
 	f.write(str(a)+"\n")
 	f.close()	
 	restart_program()
+def addp():
+	a = input("ваш порт =>")
+	f = open(portsfile, 'a')
+	f.write(str(a)+"\n")
+	f.close()	
+	restart_program()
+
+
 def menu2():
-	
 	print("\n [1] додати порт (не працює)")
 	print("\n [2] видалити порт (не працює)")
 	print("\n [3] показати всі порти")
 	print("\n [0] назад \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
-		print("ця функція не працює")
+		addp()
 	elif a == "2":
-		print("ця функція не працює")
+		f = open(portsfile, "w")
+		f.write("")
+		f.close()
+		print("порти видалено")
+		t.sleep(0.6)
+		restart_program()
 	elif a == "3":
 		if ports != []:
 			for p in ports:
@@ -178,38 +190,40 @@ def menu2():
 def servertest(ip,p):
 	host = str(ip)
 	port = int(p)
-	timeout = 10
+	timeout = 5
 	args = socket.getaddrinfo(host, port, socket.AF_INET, socket.SOCK_STREAM)
 	for family, socktype, proto, canonname, sockaddr in args:
 		s = socket.socket(family, socktype, proto)
 		socket.setdefaulttimeout(timeout)
 		try:
 			s.connect(sockaddr)
-		except socket.error:
+		except:
 			return False
 		else:
 			s.close()
 			return True
 
 def ipcheck(ip,port):
+	
 	if servertest(ip,port):
 		print("[+] "+str(ip)+":"+str(port))
 	else:
 		print("[-] "+str(ip)+":"+str(port))
-#
+
 def start():
 	if diapazons == []:
 		print("помилка немає діапазонів")
 		t.sleep(0.4)
 		restart_program()
-	print("це займе багато часу!")
+	print("")
 	if ports == []:
 		print("помилка нема портів")
 		restart_program()
 	for d in diapazons:
-		for ip in IPNetwork (d):
-			for port in ports:
-				ipcheck(ip,port)
+		if d != "\n":
+			for ip in IPNetwork (d):
+				for port in ports:
+					ipcheck(str(ip),str(port))
 	result()
 
 
@@ -217,7 +231,7 @@ def start():
 def result():
 	title_bar("result")
 	print("\n [1] пройтися по адресам (termux)")
-	print("\n [2] показати адреси і вийти")
+	print("\n [2] записати адреси в файл і вийти")
 	print("\n [0] вихід \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
@@ -226,8 +240,10 @@ def result():
 			os.system("termux-open-url http://"+a)
 			t.sleep(10)
 	elif a == "2":
-		for line in goddip:
-			print(line)
+		for line in goodip:
+			f = open('good.txt' "w")
+			f.write(line+"\n")
+			f.close()
 			exit()
 	
 	elif a == "e" or a == "exit" or a == "0":
