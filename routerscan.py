@@ -178,11 +178,11 @@ def menu2():
 def servertest(ip,p):
 	host = str(ip)
 	port = int(p)
-	time = 10
+	timeout = 10
 	args = socket.getaddrinfo(host, port, socket.AF_INET, socket.SOCK_STREAM)
 	for family, socktype, proto, canonname, sockaddr in args:
 		s = socket.socket(family, socktype, proto)
-		s.sockettimeout(time)
+		socket.setdefaulttimeout(timeout)
 		try:
 			s.connect(sockaddr)
 		except socket.error:
