@@ -28,6 +28,7 @@ def dload():
 	for line in f:
 		l = line.strip()
 		diapazons.append(str(l))
+		diapazons.remove('\n')
 	f.close()
 
 def pload():
