@@ -1,1 +1,2 @@
-
+urllib3=1.22
+netaddr=0.7.19
