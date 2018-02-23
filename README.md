@@ -3,6 +3,8 @@
 
 Router Scan is a program for scanning IP addresses and finding vulnerabilities in the router.
 
+This program is written in python 3 and uses third-party libraries
+
 ---
 
 # INSTALL
