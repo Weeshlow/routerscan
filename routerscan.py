@@ -150,8 +150,8 @@ def addp():
 
 
 def menu2():
-	print("\n [1] додати порт (не працює)")
-	print("\n [2] видалити порт (не працює)")
+	print("\n [1] додати порт")
+	print("\n [2] видалити порт")
 	print("\n [3] показати всі порти")
 	print("\n [0] назад \n")
 	a = input("rtscan ~$ ")
@@ -169,7 +169,7 @@ def menu2():
 			for p in ports:
 				print(str(p.strip()))
 			t.sleep(5)
-			menu1()
+			menu2()
 		else:
 			print("портів немає!")
 			t.sleep(3)
@@ -185,7 +185,7 @@ def menu2():
 		os.system("clear")
 		title_bar("menu2")
 		menu2()
-
+		
 #
 def servertest(ip,p):
 	host = str(ip)
