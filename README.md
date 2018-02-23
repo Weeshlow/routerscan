@@ -11,6 +11,6 @@ This program is written in python 3 and uses third-party libraries
 ``` 
 git clone https://github.com/gornostay25/routerscan
 cd routerscan
-pip install requirements.txt 
+pip install -r requirements.txt 
 python routerscan.py
 ```
