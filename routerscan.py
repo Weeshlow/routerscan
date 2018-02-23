@@ -7,7 +7,7 @@ import time as t
 try:
 	from netaddr import IPNetwork
 except ModuleNotFoundError:
-	print("будласка встановіть netaddr\npip install netaddr\n")
+	print("будласка встановіть бібліотеки\npip install -r requirements.txt\n")
 	exit()
 #####################
 #       змінні      #
