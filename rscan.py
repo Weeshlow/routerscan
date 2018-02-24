@@ -19,6 +19,8 @@ hostsfile = "hosts.txt"
 goodip = []
 diapazons = []
 ports = []
+bottocken = '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11' # no 'bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+chatid = ''
 #####################
 #     функції       #
 #####################
@@ -212,10 +214,10 @@ def servertest(ip,p):
 def ipcheck(ip,port):
 	
 	if servertest(ip,port):
-		iport = str(ip)+":"+str(port)
-		goodip.append(iport)
+		
+		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+iport)
-		sendmessage('516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo','415047826','http://'+ iport)
+		sendmessage(bottocken,chatid,'http://'+ str(ip)+":"+str(port))
 	else:
 		print("[-] "+iport)
 		
