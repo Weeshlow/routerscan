@@ -23,6 +23,11 @@ ports = []
 #     функції       #
 #####################
 
+def sendmessage(toc,id,text):
+	url = 'https://api.telegram.org/bot{}/sendmessage?chat_id{}&text={}'.format(toc,id,text)
+	r = requests.get(url)
+	del r
+
 def dload():
 	
 	f = open(hostsfile, 'r')
@@ -207,10 +212,12 @@ def servertest(ip,p):
 def ipcheck(ip,port):
 	
 	if servertest(ip,port):
-		goodip.append(str(ip)+":"+str(port))
-		print("[+] "+str(ip)+":"+str(port))
+		iport = str(ip)+":"+str(port)
+		goodip.append(iport)
+		print("[+] "+iport)
+		sendmessage('516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo','415047826',iport)
 	else:
-		print("[-] "+str(ip)+":"+str(port))
+		print("[-] "+iport)
 		
 
 def start():
