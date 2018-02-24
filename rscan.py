@@ -6,6 +6,7 @@ import sys
 import time as t
 try:
 	from netaddr import IPNetwork
+	import requests
 except ModuleNotFoundError:
 	print("будласка встановіть бібліотеки\npip install -r requirements.txt\n")
 	exit()
