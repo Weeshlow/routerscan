@@ -219,7 +219,7 @@ def ipcheck(ip,port):
 		print("[+] "+iport)
 		sendmessage(bottocken,chatid,'http://'+ str(ip)+":"+str(port))
 	else:
-		print("[-] "+iport)
+		print("[-] "+ str(ip)+":"+str(port))
 		
 
 def start():
