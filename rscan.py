@@ -211,7 +211,7 @@ def ipcheck(ip,port):
 		print("[+] "+str(ip)+":"+str(port))
 	else:
 		print("[-] "+str(ip)+":"+str(port))
-		print(goodip)
+		
 
 def start():
 	if diapazons == []:
