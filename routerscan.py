@@ -221,8 +221,7 @@ def start():
 		restart_program()
 	for d in diapazons:
 		if d == "\n":
-			print("діапазон не дорівнює пустоті")
-			break
+			continue
 		else:
 			print("з діапазона " + d)
 			for ip in IPNetwork (d):
@@ -235,7 +234,8 @@ def start():
 def result():
 	title_bar("result")
 	print("\n [1] пройтися по адресам (termux)")
-	print("\n [2] записати адреси в файл і вийти")
+	print("\n [2] назад в меню")
+	print("\n [3] вивести результати на екран")
 	print("\n [0] вихід \n")
 	a = input("rtscan ~$ ")
 	if a == "1":
@@ -244,11 +244,10 @@ def result():
 			os.system("termux-open-url http://"+a)
 			t.sleep(10)
 	elif a == "2":
-		for line in goodip:
-			f = open('good.txt' "w")
-			f.write(line+"\n")
-			f.close()
-			exit()
+		menu()
+	elif a == "3":
+		for l in goodip:
+			print(l)
 	
 	elif a == "e" or a == "exit" or a == "0":
 		restart_program()
