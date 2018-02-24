@@ -221,7 +221,7 @@ def start():
 		restart_program()
 	for d in diapazons:
 		if d == "\n":
-			continue
+			break
 		else:
 			print("з діапазона " + d)
 			for ip in IPNetwork (d):
