@@ -215,7 +215,7 @@ def ipcheck(ip,port):
 		iport = str(ip)+":"+str(port)
 		goodip.append(iport)
 		print("[+] "+iport)
-		sendmessage('516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo','415047826',iport)
+		sendmessage('516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo','415047826','http://'iport)
 	else:
 		print("[-] "+iport)
 		
