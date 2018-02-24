@@ -282,4 +282,4 @@ try:
 	pload()
 	menu()
 except KeyboardInterrupt:
-	exit(
+	exit()
