@@ -249,8 +249,8 @@ def result():
 	elif a == "2":
 		menu()
 	elif a == "3":
-		for l in goodip:
-			print(l)
+		for gip in goodip:
+			print(gip)
 	
 	elif a == "e" or a == "exit" or a == "0":
 		restart_program()
