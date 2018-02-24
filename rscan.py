@@ -207,6 +207,7 @@ def servertest(ip,p):
 def ipcheck(ip,port):
 	
 	if servertest(ip,port):
+		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+str(ip)+":"+str(port))
 	else:
 		print("[-] "+str(ip)+":"+str(port))
