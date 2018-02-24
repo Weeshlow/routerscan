@@ -19,8 +19,8 @@ hostsfile = "hosts.txt"
 goodip = []
 diapazons = []
 ports = []
-bottocken = '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11' # no 'bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
-chatid = ''
+bottocken = '516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo' # no 'bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+chatid = '415047826'
 #####################
 #     функції       #
 #####################
@@ -280,7 +280,6 @@ try:
 	start_program()
 	dload()
 	pload()
-	print("516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo")
 	menu()
 except KeyboardInterrupt:
-	exit()
+	exit(
