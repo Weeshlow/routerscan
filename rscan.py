@@ -207,7 +207,7 @@ def servertest(ip,p):
 def ipcheck(ip,port):
 	
 	if servertest(ip,port):
-		requests.open("https://api.telegram.org/bot516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo/sendmessage?chat_id=415047826&text="+str(ip)+":"+str(port)
+		requests.get("https://api.telegram.org/bot516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo/sendmessage?chat_id=415047826&text="+str(ip)+":"+str(port)
 		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+str(ip)+":"+str(port))
 	else:
