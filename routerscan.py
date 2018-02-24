@@ -220,7 +220,11 @@ def start():
 		print("помилка нема портів")
 		restart_program()
 	for d in diapazons:
-		if d != "\n":
+		if d == "\n":
+			print("діапазон не дорівнює пустоті")
+			break
+		else:
+			print("з діапазона " + d)
 			for ip in IPNetwork (d):
 				for port in ports:
 					ipcheck(str(ip),str(port))
