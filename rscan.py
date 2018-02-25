@@ -216,7 +216,7 @@ def ipcheck(ip,port):
 	if servertest(ip,port):
 		
 		goodip.append(str(ip)+":"+str(port))
-		print("[+] "+iport)
+		print("[+] "+ str(ip)+":"+str(port))
 		sendmessage(bottocken,chatid,'http://'+ str(ip)+":"+str(port))
 	else:
 		print("[-] "+ str(ip)+":"+str(port))
@@ -261,6 +261,7 @@ def result():
 	elif a == "3":
 		for gip in goodip:
 			print(gip)
+			menu()
 	
 	elif a == "e" or a == "exit" or a == "0":
 		restart_program()
