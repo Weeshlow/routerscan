@@ -33,7 +33,7 @@ def dload():
 		l = line.strip()
 		diapazons.append(str(l))
 	f.close()
-	print(diapazons)
+	
 
 def pload():
 	f = open(portsfile, 'r')
