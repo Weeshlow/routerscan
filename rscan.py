@@ -27,7 +27,7 @@ chatid = '415047826'
 #####################
 
 def dload():
-	diapazons = []
+	
 	f = open(hostsfile, 'r')
 	for line in f:
 		l = line.strip()
@@ -132,9 +132,8 @@ def menu1():
 			menu1()
 	elif a == "e" or a == "exit" or a == "0":
 		os.system("clear")
-		title_bar("menu")
-		dload()
-		menu()
+		restart_program()
+		
 	else:
 		print("неправельна команда")
 		t.sleep(3)
@@ -183,9 +182,7 @@ def menu2():
 			menu2()
 	elif a == "e" or a == "exit" or a == "0":
 		os.system("clear")
-		title_bar("menu")
-		pload()
-		menu()
+		restart_program()
 	else:
 		print("неправельна команда")
 		t.sleep(3)
