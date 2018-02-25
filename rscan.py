@@ -20,8 +20,8 @@ hostsfile = "hosts.txt"
 goodip = []
 diapazons = []
 ports = []
-bottocken = 'bot123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11' # no '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
-chatid = ''
+bottocken = 'bot516901132:AAFUwRLojh-IWN4PtgKaj3oNpuoN1f1rUWo' # no '123456:ABC-DEF1234ghIkl-zyx57W2v1u123ew11'
+chatid = '415047826'
 #####################
 #     функції       #
 #####################
@@ -210,7 +210,6 @@ def servertest(ip,p):
 def ipcheck(ip,port):
 	
 	if servertest(ip,port):
-		
 		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+ str(ip)+":"+str(port))
 		os.system("python tbot.py "+str(bottocken)+" "+str(chatid)+" http://"+str(ip)+":"+str(port))
