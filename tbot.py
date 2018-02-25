@@ -6,9 +6,9 @@ def send_message(tocken,chat,text):
     params = {'cat_id': chat, 'text': text}
     response = requests.post(url + 'sendMessage', data=params)
     return response
-main():
-    
-    
+def main():
+    for arg in sys.argv:
+    print arg
 
 
 
