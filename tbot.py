@@ -7,7 +7,7 @@ def send_message(tocken,chat,text):
     response = requests.post(url + 'sendMessage', data=params)
     return response
 def main():
-    for arg in sys.argv:
+    for arg in sys.argv[1:]:
         print(arg)
 
 
