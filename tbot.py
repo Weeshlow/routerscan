@@ -8,6 +8,5 @@ def send_message(tocken,chat,text):
     return response
 
 if __name__ == '__main__':
-    for arg in sys.argv[1:]:
-        print(arg[1])
+       print(sys.argv[1])
         
