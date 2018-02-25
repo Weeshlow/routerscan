@@ -27,6 +27,7 @@ chatid = '415047826'
 #####################
 
 def dload():
+	diapazons = []
 	f = open(hostsfile, 'r')
 	for line in f:
 		l = line.strip()
