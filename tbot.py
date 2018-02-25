@@ -7,6 +7,7 @@ def send_message(tocken,chat,text):
     return response
 
 if __name__ == '__main__':
-       if send_message(sys.argv[1],sys.argv[2],sys.argv[3]) == "<Response [200]>":
+    if send_message(sys.argv[1],sys.argv[2],sys.argv[3]) == "<Response [200]>":
+        print("")
        
         
