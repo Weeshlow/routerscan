@@ -8,7 +8,7 @@ def send_message(tocken,chat,text):
     return response
 def main():
     for arg in sys.argv:
-    print(arg)
+        print(arg)
 
 
 
