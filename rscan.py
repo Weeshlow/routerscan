@@ -173,6 +173,7 @@ def menu2():
 			for p in ports:
 				print(str(p.strip()))
 			t.sleep(5)
+			os.system("clear")
 			menu2()
 		else:
 			print("портів немає!")
