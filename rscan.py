@@ -213,7 +213,7 @@ def ipcheck(ip,port):
 		
 		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+ str(ip)+":"+str(port))
-		print("python tbot.py "+str(bottocken)+" "+str(chatid)+" "+str(ip)+":"+str(port))
+		print("python tbot.py "+str(bottocken)+" "+str(chatid)+" http://"+str(ip)+":"+str(port))
 	else:
 		print("[-] "+ str(ip)+":"+str(port))
 		
