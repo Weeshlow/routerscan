@@ -1,11 +1,16 @@
 #!/usr/bin/python
 import requests
 import sys
-text = 
-tocken = 
-chatid = 
-url = "https://api.telegram.org/{}/sendmessage?chat_id={}&text={}".format(tocken,chatid,text)
-def send_message(chat,text):
+def send_message(tocken,chat,text):
+    url = "https://api.telegram.org/{}/".format(tocken)
     params = {'cat_id': chat, 'text': text}
     response = requests.post(url + 'sendMessage', data=params)
     return response
+main():
+    
+    
+
+
+
+if __name__ == '__main__':
+    main()
