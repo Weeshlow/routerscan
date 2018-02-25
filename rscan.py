@@ -105,6 +105,7 @@ def menu():
 
 def menu1():
 	title_bar("menu1")
+	dload()
 	print("\n [1] додати діапазон")
 	print("\n [2] видалити діапазони")
 	print("\n [3] показати всі діапазони")
