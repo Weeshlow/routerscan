@@ -1,5 +1,6 @@
 #!/usr/bin/python
 import requests
+import sys
 text = 
 tocken = 
 chatid = 
