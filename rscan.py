@@ -235,7 +235,6 @@ def start():
 			for ip in IPNetwork (d):
 				for port in ports:
 					ipcheck(str(ip),str(port))
-	print(goodpi)
 	result()
 
 
