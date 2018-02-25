@@ -3,7 +3,7 @@ import requests
 import sys
 def send_message(tocken,chat,text):
     url = "https://api.telegram.org/{}/sendMessage?chat_id={}&text={}".format(tocken,chat,text)
-    response = requests.post(url)
+    response = requests.get(url)
     return response
 
 if __name__ == '__main__':
