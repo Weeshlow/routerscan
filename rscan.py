@@ -26,11 +26,6 @@ chatid = '415047826'
 #     функції       #
 #####################
 
-def sendmessage(toc,id,text):
-	url = 'https://api.telegram.org/bot{}/sendmessage?chat_id{}&text={}'.format(toc,id,text)
-	r = requests.get(url)
-	return r
-
 def dload():
 	
 	f = open(hostsfile, 'r')
@@ -218,7 +213,6 @@ def ipcheck(ip,port):
 		
 		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+ str(ip)+":"+str(port))
-		print(sendmessage(bottocken,chatid,'http://'+ str(ip)+":"+str(port)))
 	else:
 		print("[-] "+ str(ip)+":"+str(port))
 		
