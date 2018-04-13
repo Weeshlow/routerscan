@@ -212,7 +212,7 @@ def ipcheck(ip,port):
 	if servertest(ip,port):
 		goodip.append(str(ip)+":"+str(port))
 		print("[+] "+ str(ip)+":"+str(port))
-		os.system("python tbot.py "+str(bottocken)+" "+str(chatid)+" http://"+str(ip)+":"+str(port))
+		os.system("python3 tbot.py "+str(bottocken)+" "+str(chatid)+" http://"+str(ip)+":"+str(port))
 	else:
 		print("[-] "+ str(ip)+":"+str(port))
 		
@@ -232,7 +232,9 @@ def start():
 		else:
 			print("з діапазона " + d)
 			for ip in IPNetwork(d):
+				t.sleep(0.1)
 				for p in ports:
+					t.sleep(0.1)
 					ipcheck(str(ip),str(p))
 	result()
 
