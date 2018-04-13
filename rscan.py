@@ -231,9 +231,9 @@ def start():
 			break
 		else:
 			print("з діапазона " + d)
-			for ip in IPNetwork (d):
-				for port in ports:
-					ipcheck(str(ip),str(port))
+			for ip in IPNetwork(d):
+				for p in ports:
+					ipcheck(str(ip),str(p))
 	result()
 
 
