@@ -231,7 +231,7 @@ def start():
 			break
 		else:
 			print("з діапазона " + d)
-			for ip in IPNetwork(d):
+			for ip in IPNetwork(d).iter_hosts():
 				t.sleep(0.1)
 				for p in ports:
 					t.sleep(0.1)
