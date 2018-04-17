@@ -257,7 +257,8 @@ def result():
 	elif a == "3":
 		for gip in goodip:
 			print(gip)
-			menu()
+		os.system("clear")
+		menu()
 	
 	elif a == "e" or a == "exit" or a == "0":
 		restart_program()
