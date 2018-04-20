@@ -155,6 +155,7 @@ def addp():
 
 
 def menu2():
+	title_bar('menu2')
 	print("\n [1] додати порт")
 	print("\n [2] видалити порт")
 	print("\n [3] показати всі порти")
