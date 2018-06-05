@@ -227,16 +227,21 @@ def start():
 	if ports == []:
 		print("помилка нема портів")
 		restart_program()
+	ip = []
 	for d in diapazons:
 		if d == "\n":
 			break
 		else:
 			print("з діапазона " + d)
-			for ip in IPNetwork(d).iter_hosts():
+			for ipt in IPNetwork(d).iter_hosts():
 				t.sleep(0.1)
-				for p in ports:
-					t.sleep(0.1)
-					ipcheck(str(ip),str(p))
+				ip.append(ipt)
+	ip = list(set(ip))
+	for i in ip: 
+		for p in ports:
+			t.sleep(0.1)
+			print(str(i)+str(p))
+			#ipcheck(str(i),str(p))
 	result()
 
 
